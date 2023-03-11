@@ -3,9 +3,9 @@ import { Navbar } from "../Navbar/Navbar";
 
 export function Layout() {
   return (
-    <main className="bg-blue-400 h-full">
+    <main className="">
       <Navbar />
-      <section className="body h-full " >
+      <section className="" >
         <Outlet />
       </section>
   </main>
