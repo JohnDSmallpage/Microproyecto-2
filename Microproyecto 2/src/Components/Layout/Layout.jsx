@@ -3,7 +3,7 @@ import { Navbar } from "../Navbar/Navbar";
 
 export function Layout() {
   return (
-    <main className="">
+    <main className="h-screen bg-black">
       <Navbar />
       <section className="" >
         <Outlet />
