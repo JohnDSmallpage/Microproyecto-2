@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './Components/Layout/Layout'
 import { Homepage } from './Pages/Homepage/Homepage'
