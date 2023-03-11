@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Twitter from '../../imagenes/twitter.png'
 import Google from '../../imagenes/google.png'
 import Logo from '../../imagenes/Logo.png'
 import { LOGIN_URL } from '../../Urls/Urls'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { signInWithGoogle } from '../../firebase/auth-service'
 
 export function RegisterPage() {
+  // const navigate = useNavigate();
+  //   const [formData,setFormData] =useState({
+  //       name:"",
+  //       email:"",
+  //       password:"",
+  //       confirmPassword:"",
+  //   })
+  
+//const para el login con google
+    const handleSigninWithGoogle = async ()=>{
+        await signInWithGoogle();
+        // navigate()
+    }
+
+//     const onSubmit = async(event)=>{
+//         event.preventDefault();//evita que el form recargue la pagina
+//         const{email,password,...extraData}=formData//form destructurado
+//         await registerWithEmailAndPassword(email,password,extraData);
+//         navigate(PERFIL_CLIENTE)
+//     }
+// //en cada input utiliza la info del campo para agregarla al form existente
+//     const handleOnChange = (event)=>{
+//         const{name,value}=event.target;
+//         setFormData({
+//             ...formData,
+//             [name]:value,
+//         })
+//     }
+  
   return (
     <div className='flex flex-col justify-center align-center h-screen'>
         <div id='Logo' className='h-1/5 flex justify-center'>
@@ -16,7 +46,7 @@ export function RegisterPage() {
         </div>
         <div id='container' className='w-4/5 mx-auto  p-6 rounded-xl h-3/5 my-5 '>
         <div id='registros'>
-            <button  className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
+            <button onClick={handleSigninWithGoogle} className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
                 <img src={Google} className="w-6 h-6" alt=""/> <span>Iniciar con Google</span>
             </button>
             <button  className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
