@@ -2,39 +2,39 @@ import React, { useState } from 'react'
 import Twitter from '../../imagenes/twitter.png'
 import Google from '../../imagenes/google.png'
 import Logo from '../../imagenes/Logo.png'
-import { LOGIN_URL } from '../../Urls/Urls'
+import { HOME_URL, LOGIN_URL } from '../../Urls/Urls'
 import { Link, useNavigate } from 'react-router-dom'
-import { signInWithGoogle } from '../../firebase/auth-service'
+import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
 
 export function RegisterPage() {
-  // const navigate = useNavigate();
-  //   const [formData,setFormData] =useState({
-  //       name:"",
-  //       email:"",
-  //       password:"",
-  //       confirmPassword:"",
-  //   })
+  const navigate = useNavigate();
+    const [formData,setFormData] =useState({
+        name:"",
+        email:"",
+        password:"",
+        confirmPassword:"",
+    })
   
 //const para el login con google
     const handleSigninWithGoogle = async ()=>{
         await signInWithGoogle();
-        // navigate()
+        navigate(HOME_URL)
     }
 
-//     const onSubmit = async(event)=>{
-//         event.preventDefault();//evita que el form recargue la pagina
-//         const{email,password,...extraData}=formData//form destructurado
-//         await registerWithEmailAndPassword(email,password,extraData);
-//         navigate(PERFIL_CLIENTE)
-//     }
-// //en cada input utiliza la info del campo para agregarla al form existente
-//     const handleOnChange = (event)=>{
-//         const{name,value}=event.target;
-//         setFormData({
-//             ...formData,
-//             [name]:value,
-//         })
-//     }
+    const onSubmit = async(event)=>{
+        event.preventDefault();//evita que el form recargue la pagina
+        const{email,password,...extraData}=formData//form destructurado
+        await registerWithEmailAndPassword(email,password,extraData);
+        navigate(HOME_URL)
+    }
+//en cada input utiliza la info del campo para agregarla al form existente
+    const handleOnChange = (event)=>{
+        const{name,value}=event.target;
+        setFormData({
+            ...formData,
+            [name]:value,
+        })
+    }
   
   return (
     <div className='flex flex-col justify-center align-center h-screen'>
@@ -55,28 +55,28 @@ export function RegisterPage() {
         </div>
         <p className='text-white'>Correo y contraseña</p>
         <div id='form'>
-            <form action="">
+            <form action="" onSubmit={onSubmit}>
             <div className="flex flex-col space-y-5">
             <label htmlFor="name">
                     <input 
                     id="name" name="name" type="text" 
-                    
+                    onChange={handleOnChange}
                     className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Nombre completo"/>
                 </label>
                 <label htmlFor="email">
                     <input 
                     id="email" name="email" type="email" 
-                    
+                    onChange={handleOnChange}
                     className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Dirección de Correo"/>
                 </label>
                 <label htmlFor="password">
                     <input id="password" name="password" type="password" 
-                    
+                    onChange={handleOnChange}
                     className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Contraseña"/>
                 </label>
                 <label htmlFor="confirmar">
                     <input id="confirmPassword" name="confirmPassword" type="password" 
-                    
+                    onChange={handleOnChange}
                     className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Ingresa nuevamente la contraseña"/>
                 </label>
                 <button className='bg-gray-600 p-3 rounded-lg text-white  '>

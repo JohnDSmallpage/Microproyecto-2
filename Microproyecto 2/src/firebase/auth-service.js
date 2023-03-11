@@ -30,23 +30,23 @@ export const signInWithGoogle = async()=>{
 //   }
 // };
 
-// export const registerWithEmailAndPassword = async(
-//   email,
-//   password,
-//   extraData
-//   )=>{
-//   try {
-//     const result = await createUserWithEmailAndPassword(auth,email,password);
-//     await createUserProfile(result.user.uid,{
-//       email,
-//       password,
-//       ...extraData,
-//     })
-//     console.log("Register emailandpass",result)
-//   } catch (error) {
-//     console.error(error)  
-//   }
-// };
+export const registerWithEmailAndPassword = async(
+  email,
+  password,
+  extraData
+  )=>{
+  try {
+    const result = await createUserWithEmailAndPassword(auth,email,password);
+    await createUserProfile(result.user.uid,{
+      email,
+      password,
+      ...extraData,
+    })
+    console.log("Register emailandpass",result)
+  } catch (error) {
+    console.error(error)  
+  }
+};
 
 export const logout = async()=>{
   try {
