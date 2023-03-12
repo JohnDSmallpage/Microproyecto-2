@@ -18,7 +18,7 @@ export function Navbar() {
         </div>
         <div id='secondHalf' className='flex justify-items-center w-2/4 text-white justify-end'> 
         {user&&(
-          <button className='block md-hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group'>
+        <button className='block md-hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group'>
           <div className='w-5 h-1 bg-gray-600 mb-1'></div>
           <div className='w-5 h-1 bg-gray-600 mb-1'></div>
           <div className='w-5 h-1 bg-gray-600' ></div>
@@ -29,7 +29,7 @@ export function Navbar() {
               <Link to={SEARCH_URL} className='mx-4 text-xs font-bold p-6 hover:bg-white bg-black w-full h-[20px]'>Buscar Peliculas</Link>
             </ul>
           </div>
-          
+        
         </button>
           
         )}
