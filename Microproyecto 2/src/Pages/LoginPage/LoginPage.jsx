@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Twitter from '../../imagenes/twitter.png'
 import Google from '../../imagenes/google.png'
-import Logo from '../../imagenes/Logo.png'
+import Logo from '../../imagenes/logoDonPeliculonBN.png'
 import { HOME_URL, LOGIN_URL, REGISTER_URL } from '../../Urls/Urls'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
