@@ -22,7 +22,7 @@ export function Navbar() {
           <div className='w-5 h-1 bg-gray-600 mb-1'></div>
           <div className='w-5 h-1 bg-gray-600 mb-1'></div>
           <div className='w-5 h-1 bg-gray-600' ></div>
-          <div className='absolute top-0 -right-full h-screen w-1/5 bg-black border transform 
+          <div className='absolute top-0 -right-full h-screen w-[180px] bg-black border transform 
           group-focus:right-0 group-focus:opacity-100 transition-all duration-300'>
             <ul className='flex flex-col items-center w-full text-base cursor-pointer pt-10'>
               <button onClick={handleLogout} className="mx-4 text-xs font-bold">Logout</button>
@@ -39,7 +39,7 @@ export function Navbar() {
             <div className='w-5 h-1 bg-gray-600 mb-1'></div>
             <div className='w-5 h-1 bg-gray-600 mb-1'></div>
             <div className='w-5 h-1 bg-gray-600' ></div>
-            <div className='absolute top-0 -right-full h-screen w-1/5 bg-black border transform 
+            <div className='absolute top-0 -right-full h-screen w-[180px] bg-black border transform 
             group-focus:right-0 group-focus:opacity-100 transition-all duration-300'>
               <ul className='flex flex-col items-center w-full text-base cursor-pointer pt-10'>
                 <Link to={REGISTER_URL} className='mx-4 text-xs font-bold p-6 hover:bg-white bg-black w-full h-[20px]'>Registrate</Link>
