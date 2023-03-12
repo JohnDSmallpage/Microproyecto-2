@@ -42,7 +42,7 @@ export function Homepage() {
 
     <div>
       <div className='flex justify-center'>
-      <button className='text-white text-center mb-3 bg-blue-400 p-1 rounded' onClick={() => {setControl(0), setTitleVariable("Películas Actuales")}}>Películas Comunes</button>
+      <button className='text-white text-center mb-3 bg-blue-400 p-1 rounded' onClick={() => {setControl(0), setTitleVariable("Películas Actuales")}}>Películas Actuales</button>
       <button className='text-white text-center mb-3 ml-3 bg-yellow-400 p-1 rounded' onClick={() => {setControl(1), setTitleVariable("Próximos Estrenos")}} >Próximos estrenos</button>
       </div>
       <div> <h1 className='text-white  text-center mb-2 bg-slate-500 '>{titleVariable}</h1> </div>
