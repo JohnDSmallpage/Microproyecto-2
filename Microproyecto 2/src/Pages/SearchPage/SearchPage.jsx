@@ -37,14 +37,18 @@ export function SearchPage() {
 
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col">
       <label htmlFor="busqueda">
         <div className="flex flex-row items-center justify-center pt-[20px] gap-[5px]">
           <input
             id="busqueda"
             name="busqueda"
             type="busqueda"
-            className="w-[309px] h-[50px] bg-[#D9D9D9] rounded-[12px] p-2"
+            className="w-[309px] h-[50px] bg-[#D9D9D9] rounded-[12px] p-2
+            sm:w-1/2 
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2 "
             placeholder="Ingrese el nombre de la pelicula"
             value={movie_name}
             onChange={handleInputChange}
@@ -63,7 +67,7 @@ export function SearchPage() {
       <label htmlFor="resultados">
         <div className="flex justify-center items-center pt-[20px]">
           <div className="rounded-[12px]">
-            <div className='flex flex-row flex-wrap justify-around overflow-y-scroll h-[500px]'>
+            <div className='flex flex-row flex-wrap justify-evenly'>
               {
                   Ready ?  <div className="flex h-20 items-center"><h1 className="text-white text-3xl">Realice una búsqueda</h1></div> : movies.map((movie, idx) => (
                     <MovieCard movie={movie} key={idx}/>
