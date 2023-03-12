@@ -13,43 +13,38 @@ export function Navbar() {
   return (
     <nav className='bg-black flex p-3'>
         <div id='firstHalf' className='flex w-2/4 text-white '>
-          <Link to={LANDING_URL} className='flex flex-row items-center mx-4 text-xs font-bold '><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link>
-          
+        {user&&(
+          <Link to={HOME_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400'><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link>
+          )}
+        {!user&&(
+        <Link to={LANDING_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link>
+        )}
         </div>
         <div id='secondHalf' className='flex justify-items-center w-2/4 text-white justify-end'> 
-        {user&&(
-          <button className='block md-hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group'>
-          <div className='w-5 h-1 bg-gray-600 mb-1'></div>
-          <div className='w-5 h-1 bg-gray-600 mb-1'></div>
-          <div className='w-5 h-1 bg-gray-600' ></div>
-          <div className='absolute top-0 -right-full h-screen w-[180px] bg-black border transform 
-          group-focus:right-0 group-focus:opacity-100 transition-all duration-300'>
-            <ul className='flex flex-col items-center w-full text-base cursor-pointer pt-10'>
-              <button onClick={handleLogout} className="mx-4 text-xs font-bold">Logout</button>
-              <Link to={SEARCH_URL} className='mx-4 text-xs font-bold p-6 hover:bg-white bg-black w-full h-[20px]'>Buscar Peliculas</Link>
-            </ul>
-          </div>
-          
-        </button>
-          
-        )}
-        {!user&&(
 
-          <button className='block md-hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group'>
-            <div className='w-5 h-1 bg-gray-600 mb-1'></div>
-            <div className='w-5 h-1 bg-gray-600 mb-1'></div>
-            <div className='w-5 h-1 bg-gray-600' ></div>
-            <div className='absolute top-0 -right-full h-screen w-[180px] bg-black border transform 
-            group-focus:right-0 group-focus:opacity-100 transition-all duration-300'>
-              <ul className='flex flex-col items-center w-full text-base cursor-pointer pt-10'>
-                <Link to={REGISTER_URL} className='mx-4 text-xs font-bold p-6 hover:bg-white bg-black w-full h-[20px]'>Registrate</Link>
-                <Link to={LOGIN_URL} className='mx-4 text-xs font-bold p-6 hover:bg-white bg-black w-full h-[20px]'>Iniciar Sesion</Link>
-              </ul>
+          <div className='group'>
+          <button className='block py-3 px-4 mx-2 rounded  hover:bg-gray-400'>
+            <div className='w-5 h-1 bg-white mb-1'></div>
+            <div className='w-5 h-1 bg-white mb-1'></div>
+            <div className='w-5 h-1 bg-white' ></div>
+            </button>  
+            <div className='absolute top-0  -right-full h-screen w-[180px] bg-black border  
+            group-hover:right-0 group-focus:opacity-100 transition-all duration-300'>
+            {user&&(
+              <div className='flex flex-col items-center justify-center w-full text-base cursor-pointer pt-10'>
+              <button onClick={handleLogout} className="flex items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px] ">Logout</button>
+              <Link to={SEARCH_URL} className='flex  items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px]'>Buscar Peliculas</Link>
             </div>
-            
-          </button>          
+              )}
+            {!user&&(
+              <div className='flex flex-col items-center justify-center w-full text-base cursor-pointer pt-10'>
+                <Link to={REGISTER_URL} className='flex items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px] '>Registrate</Link>
+                <Link to={LOGIN_URL} className='flex items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px] '>Iniciar Sesion</Link>
+              </div>
 
         )}
+        </div>
+        </div>
         </div>
     </nav>
   )
