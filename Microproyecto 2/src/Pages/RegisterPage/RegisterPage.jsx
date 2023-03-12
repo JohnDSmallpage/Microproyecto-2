@@ -46,7 +46,7 @@ export function RegisterPage() {
         <p>Registro</p>
       </div>
 
-      <div id='container' className='w-4/5 mx-auto  p-6 rounded-xl h-3/5 my-5 '>
+      <div id='container' className='w-[350px] sm:w-[400px] mx-auto  p-6 rounded-xl h-3/5 my-5 '>
 
         <div id='registros'>
             <button onClick={handleSigninWithGoogle} className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">

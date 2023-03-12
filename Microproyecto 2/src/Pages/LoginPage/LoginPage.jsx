@@ -53,7 +53,7 @@ export function LoginPage() {
         <div className='flex justify-center align-center text-white text-4xl font-bold'>
           <p>Iniciar Sesion</p>
         </div>
-        <div id='container' className='w-4/5 mx-auto  p-6 rounded-xl h-3/5 my-5 '>
+        <div id='container' className='w-[350px] sm:w-[400px] mx-auto  p-6 rounded-xl h-3/5 my-5 '>
         
         <div id='inicios'>
 
