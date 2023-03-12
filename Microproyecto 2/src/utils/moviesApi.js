@@ -14,3 +14,7 @@ export async function getCommingMovies(page){
     return axios.get(`
     https://api.themoviedb.org/3/movie/upcoming?api_key=3c1505e6ec0c61a8a4d2da1df8c547ed&language=en-US&page=${page}`);
 }
+
+export async function getSearchedMovies(page, movie_name){
+    return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=3c1505e6ec0c61a8a4d2da1df8c547ed&language=en-US&query=${movie_name}&${page}=1&include_adult=false`)
+}
