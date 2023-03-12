@@ -4,17 +4,15 @@ import Google from '../../imagenes/google.png'
 import Logo from '../../imagenes/logoDonPeliculonBN.png'
 import { HOME_URL, LOGIN_URL, REGISTER_URL } from '../../Urls/Urls'
 import { Link, useNavigate } from 'react-router-dom'
-import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
+import { logInWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
 
 
 export function LoginPage() {
   const navigate = useNavigate();
-    const [formData,setFormData] =useState({
-        name:"",
-        email:"",
-        password:"",
-        confirmPassword:"",
-    })
+  const[formData,setFormData]=useState({
+    email:'',
+    password:'',
+})
   
 //const para el login con google
     const handleSigninWithGoogle = async ()=>{
@@ -23,29 +21,29 @@ export function LoginPage() {
     }
 
     const onSubmit = async(event)=>{
-        event.preventDefault();//evita que el form recargue la pagina
-        const{email,password,...extraData}=formData//form destructurado
-        await registerWithEmailAndPassword(email,password,extraData);
-        navigate(HOME_URL)
-    }
-//en cada input utiliza la info del campo para agregarla al form existente
-    const handleOnChange = (event)=>{
-        const{name,value}=event.target;
-        setFormData({
-            ...formData,
-            [name]:value,
-        })
-    }
+      event.preventDefault();//evita que el form recargue la pagina
+      const{email,password}=formData//form destructurado
+      await logInWithEmailAndPassword(email,password);
+      navigate(HOME_URL)
+  }
+  //en cada input utiliza la informacion del campo para agregarla al form existente
+  const handleOnChange = (event)=>{
+      const{name,value}=event.target;
+      setFormData({
+          ...formData,
+          [name]:value,
+      })
+  }
 // validacion de datos ingresados
-    const validateInfo = () =>{
-      if(true){
-        alert('Ingrese datos validos')
-      }else{
-        alert('Ha ingresado correctamente')
-      }
+    // const validateInfo = () =>{
+    //   if(true){
+    //     alert('Ingrese datos validos')
+    //   }else{
+    //     alert('Ha ingresado correctamente')
+    //   }
       
       
-    }
+    // }
   
   return (
     <div className='flex flex-col justify-center align-center h-screen'>
@@ -88,7 +86,7 @@ export function LoginPage() {
                   className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Contraseña"/>
               </label>
 
-              <button onClick={validateInfo} className='bg-gray-600 p-3 rounded-lg text-white  '>Iniciar sesion</button>
+              <button  className='bg-gray-600 p-3 rounded-lg text-white  '>Iniciar sesion</button>
               
               <p className="text-center text-white">No tienes una cuenta? <Link to={REGISTER_URL} className="text-indigo-600 font-medium inline-flex space-x-1 items-center">
                 <span>Registrate! </span><span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></span></Link>

@@ -21,14 +21,14 @@ export const signInWithGoogle = async()=>{
     }
 };
 
-// export const logInWithEmailAndPassword = async(email,password)=>{
-//   try {
-//     const result = await signInWithEmailAndPassword(auth,email,password);
-//     console.log("Login",result)
-//   } catch (error) {
-//     console.error(error)  
-//   }
-// };
+export const logInWithEmailAndPassword = async(email,password)=>{
+  try {
+    const result = await signInWithEmailAndPassword(auth,email,password);
+    console.log("Login",result)
+  } catch (error) {
+    console.error(error)  
+  }
+};
 
 export const registerWithEmailAndPassword = async(
   email,
