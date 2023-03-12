@@ -10,6 +10,7 @@ import { SearchPage } from './Pages/SearchPage/SearchPage'
 import { HOME_URL, LANDING_URL, LOGIN_URL, REGISTER_URL, SEARCH_URL } from './Urls/Urls'
 import { LandingPage } from './Pages/LandingPage/LandingPage'
 import { PrivateRoute } from './Components/PrivateRoutes/PrivateRoutes'
+import { CardDetail } from './Pages/CardDetail/CardDetail'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Route path={LOGIN_URL} element={<LoginPage/>}/>
     <Route path={HOME_URL} element={<PrivateRoute><Homepage/></PrivateRoute>}/>
     <Route path={SEARCH_URL} element={<SearchPage/>}/>
+    <Route path='/movie/:movie_id' element={<CardDetail/>}/>
 
     </Route>
   </Routes>

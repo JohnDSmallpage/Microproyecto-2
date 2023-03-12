@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export function MovieCard({movie}) {
     
   return (
-    <div className='flex flex-col items-center mb-[60px] w-[120px]'>
-        <div className='w-[80px]'> {/* Poster de la película*/}
+    <Link to={`/movie/${movie.id}`}>
+    <div className='flex flex-col items-center mb-[60px] w-[120px] border-4 border-gray-500'>
+        
+        <div className='w-[80px] '> {/* Poster de la película*/}
             <img  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}   alt="" />
         </div>
         
@@ -13,6 +16,8 @@ export function MovieCard({movie}) {
             <h3>Popularidad: {movie.popularity}</h3>
             <h3>Idioma: {movie.original_language}</h3>
         </div>
+       
     </div>
+    </Link>
   )
 }
