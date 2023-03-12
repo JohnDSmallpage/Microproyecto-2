@@ -20,9 +20,9 @@ export function CardDetail() {
       }, [])
 
   return (
-    <div id= 'main-container' className='flex flex-col text-white p-6'>
+    <div id= 'main-container' className='flex flex-col text-white p-6 font-bold'>
         <div id='title' className='mb-2 h-1/5' >
-            <h1>{movie.title}</h1>
+            <h1 className='text-yellow-300'>{movie.title}</h1>
             <p>{movie.release_date}</p>
         </div>
 
