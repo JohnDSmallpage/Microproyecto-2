@@ -14,20 +14,7 @@ export function Navbar() {
     <nav className='bg-black flex p-3'>
         <div id='firstHalf' className='flex w-2/4 text-white '>
         {user&&(
-        <button className='block md-hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group'>
-          <div className='w-5 h-1 bg-gray-600 mb-1'></div>
-          <div className='w-5 h-1 bg-gray-600 mb-1'></div>
-          <div className='w-5 h-1 bg-gray-600' ></div>
-          <div className='absolute top-0 -right-full h-screen w-[180px] bg-black border transform 
-          group-focus:right-0 group-focus:opacity-100 transition-all duration-300'>
-            <ul className='flex flex-col items-center w-full text-base cursor-pointer pt-10'>
-              <button onClick={handleLogout} className="mx-4 text-xs font-bold">Logout</button>
-              <Link to={SEARCH_URL} className='mx-4 text-xs font-bold p-6 hover:bg-white bg-black w-full h-[20px]'>Buscar Peliculas</Link>
-            </ul>
-          </div>
-        
-        </button>
-          
+         <Link to={HOME_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link> 
         )}
         {!user&&(
         <Link to={LANDING_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link>
