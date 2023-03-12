@@ -5,9 +5,9 @@ import { LOGIN_URL, REGISTER_URL } from '../../Urls/Urls'
 
 export function LandingPage() {
   return (
-    <div id='container' style={{ backgroundImage: `url(${background})` }} className="flex items-center justify-center bg-black bg-opacity-50 bg-contain bg-cover w-full">
+    <div id='container' style={{ backgroundImage: `url(${background})` }} className="flex items-center justify-center bg-black bg-opacity-50 bg-contain w-full h-full">
       
-      <div className='flex items-center flex-col justify-center h-[500px] justify-evenly'>
+      <div className='flex items-center flex-col justify-center h-[500px] '>
         <p className='sm:text-3xl text-white text-2xl font-extrabold text-center'>Busca las mejores peliculas y cuando Verlas</p>
         
       <div className='flex items-center justify-center flex-col' >

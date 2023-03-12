@@ -4,10 +4,10 @@ import { Navbar } from "../Navbar/Navbar";
 
 export function Layout() {
   return (
-    <main className="h-screen bg-black">
+    <main>
       <UserContextProvider>
       <Navbar />
-      <section className="" >
+      <section className=" bg-black h-[100vh]" >
         <Outlet />
       </section>
       </UserContextProvider>
