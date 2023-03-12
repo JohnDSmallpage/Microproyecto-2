@@ -3,11 +3,14 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { MovieCard } from '../../Components/MovieCard/MovieCard';
 import { getMoviesList } from '../../utils/moviesApi';
+import { getCommingMovies } from '../../utils/moviesApi';
 
 export function Homepage() {
 
   const[movies, setMovies] = useState([]);
   const[page, setPage] = useState(1);
+  const [control, setControl] = useState(1);
+  const[titleVariable, setTitleVariable]  = useState("Películas Actuales")
   const maxpage= 500;
 
   const getMovies= async (page) => {
@@ -15,9 +18,21 @@ export function Homepage() {
     setMovies(data.results)
   }
 
+  const getCommingSoon= async (page) => {
+    const {data} = await getCommingMovies(page);
+    setMovies(data.results)
+  }
+
+
   useEffect( () => {
-    getMovies(page);
-  }, [page])
+    if(control==0){
+      getMovies(page);
+    }
+    else{
+      getCommingSoon(page);
+    }
+    
+  }, [page, control])
 
 
 
@@ -26,7 +41,11 @@ export function Homepage() {
   return (
 
     <div>
-      <h1>Películas Comunes</h1>
+      <div className='flex justify-center'>
+      <button className='text-white text-center mb-3 bg-blue-400 p-1 rounded' onClick={() => {setControl(0), setTitleVariable("Películas Actuales")}}>Películas Comunes</button>
+      <button className='text-white text-center mb-3 ml-3 bg-yellow-400 p-1 rounded' onClick={() => {setControl(1), setTitleVariable("Próximos Estrenos")}} >Próximos estrenos</button>
+      </div>
+      <div> <h1 className='text-white  text-center mb-2 bg-slate-500 '>{titleVariable}</h1> </div>
       
       <div className='flex flex-row flex-wrap justify-around overflow-y-scroll h-[500px]'>
         {movies.map((movie, idx) => (
