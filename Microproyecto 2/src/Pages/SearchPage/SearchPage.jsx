@@ -1,9 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Lupa from "../../imagenes/search-line.png";
-import FlechaIzq from "../../imagenes/arrow-left-s-line.png";
-import FlechaDer from "../../imagenes/arrow-right-s-line.png";
+import { getSearchedMovies } from "../../utils/moviesApi";
+import { MovieCard } from "../../Components/MovieCard/MovieCard";
+
 
 export function SearchPage() {
+
+  const[movies, setMovies] = useState([]);
+  const[page, setPage] = useState(1)
+  const[movie_name, setMovieName] = useState("")
+  const[controlSearch, setControlSearch] = useState(0);
+  const[Ready, setReady] = useState("Realice una búsqueda")
+
+  const getMoviesSearch = async (page, movie_name) => {
+    const {data} = await getSearchedMovies(page, movie_name);
+    setMovies(data.results)
+  }
+
+  useEffect( () => {
+    if(movie_name!=""){
+      getMoviesSearch(page, movie_name)
+      setReady("")
+      setControlSearch(0)
+    }
+    
+  }, [page, controlSearch])
+
+  const handleInputChange = ({target}) => {
+    setMovieName(target.value);
+  }
+
+
+
+
+
+
+
   return (
     <div className="flex flex-col h-screen">
       <label htmlFor="busqueda">
@@ -14,41 +46,35 @@ export function SearchPage() {
             type="busqueda"
             className="w-[309px] h-[50px] bg-[#D9D9D9] rounded-[12px] p-2"
             placeholder="Ingrese el nombre de la pelicula"
+            value={movie_name}
+            onChange={handleInputChange}
           />
 
           <button
-            /* onClick={}*/ className="flex justify-center items-center w-[50px] h-[50px] bg-[#3B4443] rounded-[12px]"
+            className="flex justify-center items-center w-[50px] h-[50px] bg-[#3B4443] rounded-[12px]"
+            onClick={() => {setReady(""),setControlSearch(1)}}
           >
             <img className="w-[24px] h-[24px]" src={Lupa} alt="" />
           </button>
         </div>
       </label>
+      
 
       <label htmlFor="resultados">
         <div className="flex justify-center items-center pt-[20px]">
-          <div className="w-[364px] h-[619px] bg-[#D9D9D9] rounded-[12px]"></div>
-        </div>
-      </label>
-
-      <label htmlFor="paginas">
-        <div className="flex justify-evenly items-center pt-[8px]">
-          <button
-            /* onClick={}*/ className="flex justify-center items-center w-[50px] h-[50px] bg-[#3B4443] rounded-[12px]"
-          >
-            <img className=" w-[24px] h-[24px]" src={FlechaIzq} alt="" />
-          </button>
-
-          <div className="w-[139px] h-[50px] bg-[#3B4443] rounded-[12px]">
-
+          <div className="rounded-[12px]">
+            <div className='flex flex-row flex-wrap justify-around overflow-y-scroll h-[500px]'>
+              {
+                  Ready ?  <div className="flex h-20 items-center"><h1 className="text-white text-3xl">Realice una búsqueda</h1></div> : movies.map((movie, idx) => (
+                    <MovieCard movie={movie} key={idx}/>
+                  )
+                  )
+              }
+            </div> 
           </div>
-
-          <button
-            /* onClick={}*/ className="flex justify-center items-center w-[50px] h-[50px] bg-[#3B4443] rounded-[12px]"
-          >
-            <img className=" w-[24px] h-[24px]" src={FlechaDer} alt="" />
-          </button>
         </div>
       </label>
+
     </div>
   );
 }
