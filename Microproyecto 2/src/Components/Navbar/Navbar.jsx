@@ -28,7 +28,7 @@ export function Navbar() {
             <div className='w-5 h-1 bg-white mb-1'></div>
             <div className='w-5 h-1 bg-white' ></div>
             </button>  
-            <div className='absolute top-0  -right-full h-screen w-[180px] bg-black border  
+            <div className='absolute top-0 hidden group-hover:block  -right-full h-screen w-[180px] bg-black border  
             group-hover:right-0 group-focus:opacity-100 transition-all duration-300'>
             {user&&(
               <div className='flex flex-col items-center justify-center w-full text-base cursor-pointer pt-10'>
