@@ -21,8 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Route path={REGISTER_URL} element={<RegisterPage/>}/>
     <Route path={LOGIN_URL} element={<LoginPage/>}/>
     <Route path={HOME_URL} element={<PrivateRoute><Homepage/></PrivateRoute>}/>
-    <Route path={SEARCH_URL} element={<SearchPage/>}/>
-    <Route path='/movie/:movie_id' element={<CardDetail/>}/>
+    <Route path={SEARCH_URL} element={<PrivateRoute><SearchPage/></PrivateRoute>}/>
+    <Route path='/movie/:movie_id' element={<PrivateRoute><CardDetail/></PrivateRoute>}/>
 
     </Route>
   </Routes>
