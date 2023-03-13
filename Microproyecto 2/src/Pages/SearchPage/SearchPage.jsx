@@ -8,6 +8,7 @@ export function SearchPage() {
 
   const[movies, setMovies] = useState([]);
   const[page, setPage] = useState(1)
+  const[maxpage, setMaxPage] = useState(1)
   const[movie_name, setMovieName] = useState("")
   const[controlSearch, setControlSearch] = useState(0);
   const[Ready, setReady] = useState("Realice una búsqueda")
@@ -15,11 +16,16 @@ export function SearchPage() {
   const getMoviesSearch = async (page, movie_name) => {
     const {data} = await getSearchedMovies(page, movie_name);
     setMovies(data.results)
+    setMaxPage(data.total_pages)
   }
 
   useEffect( () => {
     if(movie_name!=""){
       getMoviesSearch(page, movie_name)
+      setReady("")
+      setControlSearch(0)
+    }
+    else{
       setReady("")
       setControlSearch(0)
     }
@@ -56,7 +62,7 @@ export function SearchPage() {
 
           <button
             className="flex justify-center items-center w-[50px] h-[50px] bg-[#3B4443] rounded-[12px]"
-            onClick={() => {setReady(""),setControlSearch(1)}}
+            onClick={() => {setReady(""),setControlSearch(1), setPage(1)}}
           >
             <img className="w-[24px] h-[24px]" src={Lupa} alt="" />
           </button>
@@ -68,9 +74,10 @@ export function SearchPage() {
         <div className="flex justify-center items-center pt-[20px] overflow-y-scroll">
           <div className="rounded-[12px]">
             <div className='flex flex-row flex-wrap justify-evenly'>
+              
               {
                   Ready ?  <div className="flex h-20 items-center"><h1 className="text-white text-3xl">Realice una búsqueda</h1></div> : movies.map((movie, idx) => (
-                    <MovieCard movie={movie} key={idx}/>
+                     <MovieCard movie={movie} key={idx}/>
                   )
                   )
               }
@@ -78,6 +85,20 @@ export function SearchPage() {
           </div>
         </div>
       </label>
+
+      <div className='flex justify-evenly items-center flex-row text-white p-6 
+    sm:text-[22px]
+    md:text-[22px]
+    lg:text-[22px]
+    xl:text-[22px]
+  '>
+    <button onClick={() => {if(page!=1){setPage(page-1)}}}>Anterior</button>
+    <button >{page}</button>
+    <button onClick={() => {setPage(page+1)}}>{page+1}</button>
+    <button onClick={() => {setPage(page+2)}}>{page+2}</button>
+    <button onClick={() => {if(page!=maxpage){setPage(page+1)}}}>Siguiente</button>
+  </div>
+      
 
     </div>
   );
