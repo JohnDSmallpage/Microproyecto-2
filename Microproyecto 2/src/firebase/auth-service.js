@@ -6,8 +6,12 @@ import { createUserProfile } from "./users-service";
 
 let Error = '';
 let strippedError = "";
+let complete=false;
 export function returnError(){
   return Error;
+}
+export function completed(){
+  return complete;
 }
 export const signInWithGoogle = async()=>{
     try {
@@ -28,7 +32,7 @@ export const signInWithGoogle = async()=>{
 export const logInWithEmailAndPassword = async(email,password)=>{
   try {
     const result = await signInWithEmailAndPassword(auth,email,password);
-    console.log("Login",result)
+    complete=true;
   } catch (error) {
     Error=error.code;
     strippedError = Error.replace("auth/", "")
@@ -56,12 +60,13 @@ export const registerWithEmailAndPassword = async(
     if(password==confirmPassword){
   try {
     const result = await createUserWithEmailAndPassword(auth,email,password);
+    complete=true;
     await createUserProfile(result.user.uid,{
       email,
       password,
       ...extraData,
     })
-    console.log("Register emailandpass",result)
+    
   } catch (error) {
     Error=error.code;
     strippedError = Error.replace("auth/", "")

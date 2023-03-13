@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { logInWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
 import { useUser } from '../../Context/userContext'
 import { returnError } from '../../firebase/auth-service'
+import { completed } from '../../firebase/auth-service'
 
 
 export function LoginPage() {
@@ -28,7 +29,7 @@ export function LoginPage() {
       event.preventDefault();//evita que el form recargue la pagina
       const{email,password}=formData//form destructurado
       await logInWithEmailAndPassword(email,password);
-      if(user){
+      if(completed){
         navigate(HOME_URL)
       }else{
         setError(returnError())
@@ -43,17 +44,11 @@ export function LoginPage() {
           [name]:value,
       })
   }
-// validacion de datos ingresados
-    // const validateInfo = () =>{
-    //   if(true){
-    //     alert('Ingrese datos validos')
-    //   }else{
-    //     alert('Ha ingresado correctamente')
-    //   }
-      
-      
-    // }
-  
+
+    function alerta() {
+      window.alert("Lo intentamos pero papi Elon Musk no nos dio permiso de usar la Api de Twitter");
+    }
+
   return (
     <div className='flex flex-col justify-center align-center h-screen'>
         <div id='Logo' className='h-1/5 flex justify-center'>
@@ -70,7 +65,7 @@ export function LoginPage() {
                 <img src={Google} className="w-6 h-6" alt=""/> <span>Iniciar con Google</span>
             </button>
 
-            <button  className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
+            <button  onClick={alerta} className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
                 <img src={Twitter} className="w-6 h-6" alt=""/> <span>Iniciar con Twitter</span>
             </button>
 

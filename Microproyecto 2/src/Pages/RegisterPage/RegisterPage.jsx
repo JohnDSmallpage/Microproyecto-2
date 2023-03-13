@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Twitter from '../../imagenes/twitter.png'
 import Google from '../../imagenes/google.png'
 import Logo from '../../imagenes/logoDonPeliculonBN.png'
-import { HOME_URL, LOGIN_URL } from '../../Urls/Urls'
+import { HOME_URL, LOGIN_URL, REGISTER_URL } from '../../Urls/Urls'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
 import { useUser } from '../../Context/userContext'
 import { returnError } from '../../firebase/auth-service'
+import { completed } from '../../firebase/auth-service'
 
 export function RegisterPage() {
   const{user}=useUser();
@@ -22,17 +23,22 @@ export function RegisterPage() {
 //const para el login con google
     const handleSigninWithGoogle = async ()=>{
         await signInWithGoogle();
-        navigate(HOME_URL)
+        if(completed()){
+          navigate(HOME_URL)
+        }else{
+          navigate(REGISTER_URL)
+        }
     }
 
     const onSubmit = async(event)=>{
         event.preventDefault();//evita que el form recargue la pagina
         const{email,password,confirmPassword,...extraData}=formData//form destructurado
         await registerWithEmailAndPassword(email,password,confirmPassword,extraData);
-        if(user){
+        if(completed()){
           navigate(HOME_URL)
         }else{
           setError(returnError())
+          navigate(REGISTER_URL)
         }
     }
 //en cada input utiliza la info del campo para agregarla al form existente
@@ -43,7 +49,9 @@ export function RegisterPage() {
             [name]:value,
         })
     }
-  
+    function alerta() {
+      window.alert("Lo intentamos pero papi Elon Musk no nos dio permiso de usar la Api de Twitter");
+    }
   return (
     <div className='flex flex-col justify-center align-center h-screen'>
       <div id='Logo' className='h-1/5 flex justify-center'>
@@ -60,7 +68,7 @@ export function RegisterPage() {
             <button onClick={handleSigninWithGoogle} className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
                 <img src={Google} className="w-6 h-6" alt=""/> <span>Registrarse con Google</span>
             </button>
-            <button  className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
+            <button onClick={alerta} className="w-full bg-white text-center py-3 my-3 border flex space-x-2 items-center justify-center rounded-lg hover:shadow">
                 <img src={Twitter} className="w-6 h-6" alt=""/> <span>Registrarse con Twitter</span>
             </button>
         </div>
