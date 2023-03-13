@@ -5,9 +5,13 @@ import Logo from '../../imagenes/logoDonPeliculonBN.png'
 import { HOME_URL, LOGIN_URL, REGISTER_URL } from '../../Urls/Urls'
 import { Link, useNavigate } from 'react-router-dom'
 import { logInWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
+import { useUser } from '../../Context/userContext'
+import { returnError } from '../../firebase/auth-service'
 
 
 export function LoginPage() {
+  const{user}=useUser();
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const[formData,setFormData]=useState({
     email:'',
@@ -24,7 +28,12 @@ export function LoginPage() {
       event.preventDefault();//evita que el form recargue la pagina
       const{email,password}=formData//form destructurado
       await logInWithEmailAndPassword(email,password);
-      navigate(HOME_URL)
+      if(user){
+        navigate(HOME_URL)
+      }else{
+        setError(returnError())
+      }
+      
   }
   //en cada input utiliza la informacion del campo para agregarla al form existente
   const handleOnChange = (event)=>{
@@ -85,7 +94,7 @@ export function LoginPage() {
                   onChange={handleOnChange}
                   className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Contraseña"/>
               </label>
-
+              <p className='text-red-700'>{error}</p>
               <button  className='bg-gray-600 p-3 rounded-lg text-white  '>Iniciar sesion</button>
               
               <p className="text-center text-white">No tienes una cuenta? <Link to={REGISTER_URL} className="text-indigo-600 font-medium inline-flex space-x-1 items-center">
