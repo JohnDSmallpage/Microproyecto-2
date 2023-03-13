@@ -39,7 +39,7 @@ export function SearchPage() {
   return (
     <div className="flex flex-col">
       <label htmlFor="busqueda">
-        <div className="flex flex-row items-center justify-center pt-[20px] gap-[5px]">
+        <div className="flex flex-row items-center justify-center pt-[20px] gap-[5px] border-b-2 p-2">
           <input
             id="busqueda"
             name="busqueda"
@@ -65,7 +65,7 @@ export function SearchPage() {
       
 
       <label htmlFor="resultados">
-        <div className="flex justify-center items-center pt-[20px]">
+        <div className="flex justify-center items-center pt-[20px] overflow-y-scroll">
           <div className="rounded-[12px]">
             <div className='flex flex-row flex-wrap justify-evenly'>
               {
