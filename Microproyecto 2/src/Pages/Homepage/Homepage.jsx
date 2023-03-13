@@ -59,14 +59,14 @@ export function Homepage() {
         xl:text-[31px]
       '>{titleVariable}</h1> </div>
       
-      <div className='flex flex-row flex-wrap justify-evenly overflow-y-scroll h-[500px]'>
+      <div className='flex flex-row flex-wrap justify-evenly overflow-y-scroll h-[800px]'>
         {movies.map((movie, idx) => (
           <MovieCard movie={movie} key={idx}/>
         )
         )}
       </div> 
 
-      <div className='flex justify-evenly items-center flex-row text-white p-6
+      <div className='flex justify-evenly items-center flex-row text-white p-6 
         sm:text-[22px]
         md:text-[22px]
         lg:text-[22px]

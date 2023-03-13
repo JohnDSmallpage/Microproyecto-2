@@ -37,7 +37,7 @@ export function SearchPage() {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-black">
       <label htmlFor="busqueda">
         <div className="flex flex-row items-center justify-center pt-[20px] gap-[5px] border-b-2 p-2">
           <input
