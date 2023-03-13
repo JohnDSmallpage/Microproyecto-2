@@ -5,8 +5,12 @@ import Logo from '../../imagenes/logoDonPeliculonBN.png'
 import { HOME_URL, LOGIN_URL } from '../../Urls/Urls'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
+import { useUser } from '../../Context/userContext'
+import { returnError } from '../../firebase/auth-service'
 
 export function RegisterPage() {
+  const{user}=useUser();
+  const [error, setError] = useState("");
   const navigate = useNavigate();
     const [formData,setFormData] =useState({
         name:"",
@@ -23,9 +27,13 @@ export function RegisterPage() {
 
     const onSubmit = async(event)=>{
         event.preventDefault();//evita que el form recargue la pagina
-        const{email,password,...extraData}=formData//form destructurado
-        await registerWithEmailAndPassword(email,password,extraData);
-        navigate(HOME_URL)
+        const{email,password,confirmPassword,...extraData}=formData//form destructurado
+        await registerWithEmailAndPassword(email,password,confirmPassword,extraData);
+        if(user){
+          navigate(HOME_URL)
+        }else{
+          setError(returnError())
+        }
     }
 //en cada input utiliza la info del campo para agregarla al form existente
     const handleOnChange = (event)=>{
@@ -85,9 +93,9 @@ export function RegisterPage() {
                   onChange={handleOnChange}
                   className="w-full py-3 border  rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Ingresa nuevamente la contraseña"/>
               </label>
-                    
+              <p className='text-red-700'>{error}</p> 
               <button className='bg-gray-600 p-3 rounded-lg text-white  '>
-                Login
+                Registrarse
               </button>
               
               <p className="text-center text-white">Ya tienes una cuenta? <Link to={LOGIN_URL} className="text-indigo-600 font-medium inline-flex space-x-1 items-center"><span>Inicia sesion! </span><span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
