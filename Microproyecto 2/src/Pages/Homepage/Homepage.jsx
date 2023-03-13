@@ -50,11 +50,11 @@ export function Homepage() {
         lg:text-[20px]
         xl:text-[25px]
       
-      ' onClick={() => {setControl(0), setTitleVariable("Películas Actuales")}}>Películas Actuales</button>
+      ' onClick={() => {setControl(0), setTitleVariable("Películas Actuales"), setPage(1)}}>Películas Actuales</button>
       <button className='text-white text-center mb-3 ml-3 bg-yellow-400 p-1 rounded
         lg:text-[20px]
         xl:text-[25px]
-      ' onClick={() => {setControl(1), setTitleVariable("Próximos Estrenos")}} >Próximos estrenos</button>
+      ' onClick={() => {setControl(1), setTitleVariable("Próximos Estrenos"), setPage(1)}} >Próximos estrenos</button>
       </div>
       <div> <h1 className='text-white  text-center mb-2 bg-slate-500  text-[22px]
         sm:text-[22px]
