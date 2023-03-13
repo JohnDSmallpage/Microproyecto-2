@@ -14,7 +14,8 @@ export function Navbar() {
     <nav className='bg-black flex p-3'>
         <div id='firstHalf' className='flex w-2/4 text-white '>
         {user&&(
-         <Link to={HOME_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link> 
+         <Link to={HOME_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[60px]
+         ' src={Logo} alt=""/>Don Peliculon</Link> 
         )}
         {!user&&(
         <Link to={LANDING_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[45px] h-[45px]' src={Logo} alt=""/>Don Peliculon</Link>
