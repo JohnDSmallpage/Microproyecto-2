@@ -38,7 +38,6 @@ export function RegisterPage() {
           navigate(HOME_URL)
         }else{
           setError(returnError())
-          navigate(REGISTER_URL)
         }
     }
 //en cada input utiliza la info del campo para agregarla al form existente

@@ -24,6 +24,7 @@ export const signInWithGoogle = async()=>{
             name: result.user.displayName,
           })
         }
+        complete=true;
     } catch (error) {
       console.error(error)  
     }
