@@ -7,7 +7,7 @@ export function Layout() {
     <main>
       <UserContextProvider>
       <Navbar />
-      <section className=" bg-black h-[1000px]" >
+      <section className=" bg-black h-[1000px] font-Lexend" >
         <Outlet />
       </section>
       </UserContextProvider>

@@ -11,7 +11,7 @@ export function Navbar() {
       await logout()
    }
   return (
-    <nav className='bg-black flex p-3'>
+    <nav className='bg-black flex p-3 font-Lexend'>
         <div id='firstHalf' className='flex w-2/4 text-white '>
         {user&&(
          <Link to={HOME_URL} className='flex flex-row items-center mx-4 text-xs font-bold hover:text-yellow-400 '><img className='w-[60px]
