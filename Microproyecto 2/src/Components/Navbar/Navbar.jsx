@@ -34,6 +34,7 @@ export function Navbar() {
             {user&&(
               <div className='flex flex-col items-center justify-center w-full text-base cursor-pointer pt-10'>
               <Link to={SEARCH_URL} className='flex  items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px]'>Buscar Peliculas</Link>
+              <Link to={HOME_URL} className='flex  items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px]'>Inicio</Link>
               <button onClick={handleLogout} className="flex items-center justify-center mx-4 text-xs font-bold p-6 hover:bg-white hover:text-black bg-black w-full h-[15px] ">Logout</button>
               
             </div>
