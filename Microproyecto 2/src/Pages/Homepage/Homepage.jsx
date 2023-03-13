@@ -2,8 +2,10 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { MovieCard } from '../../Components/MovieCard/MovieCard';
+
 import { getMoviesList } from '../../utils/moviesApi';
 import { getCommingMovies } from '../../utils/moviesApi';
+
 
 export function Homepage() {
 
@@ -22,6 +24,8 @@ export function Homepage() {
     const {data} = await getCommingMovies(page);
     setMovies(data.results)
   }
+
+
 
 
   useEffect( () => {
@@ -67,17 +71,17 @@ export function Homepage() {
       </div> 
 
       <div className='flex justify-evenly items-center flex-row text-white p-6 
-        sm:text-[22px]
-        md:text-[22px]
-        lg:text-[22px]
-        xl:text-[22px]
-      '>
-        <button onClick={() => {if(page!=1){setPage(page-1)}}}>Anterior</button>
-        <button >{page}</button>
-        <button onClick={() => {setPage(page+1)}}>{page+1}</button>
-        <button onClick={() => {setPage(page+2)}}>{page+2}</button>
-        <button onClick={() => {if(page!=maxpage){setPage(page+1)}}}>Siguiente</button>
-      </div>
+    sm:text-[22px]
+    md:text-[22px]
+    lg:text-[22px]
+    xl:text-[22px]
+  '>
+    <button onClick={() => {if(page!=1){setPage(page-1)}}}>Anterior</button>
+    <button >{page}</button>
+    <button onClick={() => {setPage(page+1)}}>{page+1}</button>
+    <button onClick={() => {setPage(page+2)}}>{page+2}</button>
+    <button onClick={() => {if(page!=maxpage){setPage(page+1)}}}>Siguiente</button>
+  </div>
 
     </div>
     
